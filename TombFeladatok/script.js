@@ -51,36 +51,34 @@ function hossztszamol(){
     }
 }
 
-function szamkodolas(){
-    let szamkod=document.getElementById("szamkod").value
+function szamkodolas() {
+    let szamkod = document.getElementById("szamkod").value
     let osszeg = 0
-    if(szamkod.length!=8){
+
+    if (szamkod.length != 8) {
         alert("Nem adtál meg 8 db számot!")
         return
     }
-    console.log("Kód hossza" + szamkod.length);
-    
-    // let szam = szamkod[0]
-    for (let sz=0; sz < szamkod.length;sz++)
-        for (let i=1;i<8;i++){
-            if (i%2 != 2){
-                osszeg += Number(szamkod[sz]) * 2
 
-            }
-            else{
-                osszeg += Number(szamkod[sz]) * 3
-            }
+    // csak az első 7 számjegyet számoljuk!
+    for (let i = 0; i < 7; i++) {
+
+        if (i % 2 == 0) {   // páratlan pozíció (0,2,4,6)
+            osszeg += Number(szamkod[i]) * 2
+        }
+        else {              // páros pozíció (1,3,5)
+            osszeg += Number(szamkod[i]) * 3
+        }
     }
 
-    let osztas = osszeg%10
-    console.log("osztás eredménye: " + osztas);
-    
-    if (osztas==szamkod[7]){
-        console.log("Jó a számsor");
-        
+    let ellenorzoSzam = osszeg % 10
+
+    console.log("Számolt ellenőrző szám: " + ellenorzoSzam)
+
+    if (ellenorzoSzam == Number(szamkod[7])) {
+        console.log("Jó a számsor")
     }
-    else{
-        console.log("Nem jó számsor");
-        
+    else {
+        console.log("Nem jó számsor")
     }
 }
