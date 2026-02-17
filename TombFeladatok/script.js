@@ -82,3 +82,5 @@ function szamkodolas() {
         console.log("Nem jó számsor")
     }
 }
+
+
